@@ -6,13 +6,14 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Python Flask Upload and display image</title>
+    <link rel="icon" type="image/x-icon" href="/static/icons/main.ico">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" />
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
 </head>
 
 <body>
     <p>
-    <h1 align="center">Python Flask Upload and display image</h1>
+    <h1 align="center">Passport Face Recognizer</h1>
     </p>
     <div class="container">
         <div class="row">
@@ -35,15 +36,16 @@
                         <input type="file" name="file" class="form-control" autocomplete="off" required>
                     </p>
                 </dl>
-                <p>
-                    <input type="submit" value="Predict" name="btn" class="btn btn-info">
-                </p>
+                <div class="d-flex flex-row col-12">
+                    <div class="col-lg-1">
+                        <input type="submit" value="Predict" name="btn" class="btn btn-info">
+                    </div>
+                    <div class="col-lg-9">
+                        <p style="margin-top: 8px;"><b>{{res}}</b></p>
+                    </div>
+                </div>
             </form>
         </div>
     </div>
-    <div>
-        <p>{{res}}</p>
-    </div>
 </body>
-
 </html>
