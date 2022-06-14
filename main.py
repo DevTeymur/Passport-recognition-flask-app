@@ -5,6 +5,10 @@ from flask import Flask, render_template
 import os
 from flask import Flask, flash, request, redirect, url_for
 from werkzeug.utils import secure_filename
+from warnings import filterwarnings
+filterwarnings("ignore")
+
+from model.model import *
 
 app = Flask(__name__)
 
@@ -25,10 +29,6 @@ def allowed_file(filename):
 def index():
     return render_template('index.html')
 
-def f(filename):
-    return  filename + ' back'
-
-
 @app.route('/', methods=['POST'])
 def upload_image():
     if 'file' not in request.files:
@@ -42,7 +42,8 @@ def upload_image():
         filename = secure_filename(file.filename)
         file.save(os.path.join(app.config['UPLOAD_FOLDER'], filename))
         flash('Image successfully uploaded')
-        return render_template('index.html', c=f(filename))
+        result=returnImgCls(filename)
+        return render_template('index.html', res=result)
     else:
         flash('Allowed image types are - png, jpg, jpeg, gif')
         return redirect(request.url)
